@@ -1,15 +1,21 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
 
-describe('AppComponent', () => {
+@Component({selector: 'toh-toolbar', template: ''})
+class ToolbarComponent {}
+
+
+describe('App Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        ToolbarComponent
       ],
     }).compileComponents();
   }));
@@ -20,16 +26,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'toh-angular'`, () => {
+  it(`should contain title 'Tour of heroes'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('toh-angular');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('toh-angular app is running!');
+    expect(app.title).toContain('Tour of heroes');
   });
 });
